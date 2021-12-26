@@ -68,6 +68,50 @@
 # sort_array entered_list
 
 
+#word sort using recursion, this version fully works
+entered_list = ['people', 'tree', 'tree', 'snow', 'cold', 'cookies',
+				'gifts']
+def sort_array some_array
+	recursive_sort some_array, [], []
+end
+
+def recursive_sort unsorted_list, sorted_list, checked_list
+	if unsorted_list.length == 0
+		puts sorted_list
+		exit!
+	end
+	word_one = unsorted_list.pop
+	word_two = unsorted_list.pop
+	if word_two == nil
+		sorted_list.push word_one
+		unsorted_list = checked_list
+		checked_list = []
+	elsif word_two < word_one
+		unsorted_list.push word_two
+		checked_list.push word_one
+	elsif word_one == word_two
+		unsorted_list.push word_one
+	elsif word_one < word_two
+		unsorted_list.push word_one
+		checked_list.push word_two
+	end
+	recursive_sort unsorted_list, sorted_list, checked_list
+# 	puts '-S-'
+# 	puts sorted_list
+# 	puts '-U-'
+# 	puts unsorted_list
+end
+
+sort_array entered_list
+
+
+
+
+
+
+
+
+
 
 
 
