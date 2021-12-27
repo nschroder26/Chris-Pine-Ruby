@@ -230,10 +230,143 @@ def english_number number
 
 	left = number
 
+	write = left/100000000000000
+	left = left - write*100000000000000
+	if write > 0
+		hund_thousands = english_number write
+		if left > 100000000000000
+			num_string = num_string + hund_thousands + ' hundred trillion'
+		elsif left < 1000000000000
+			num_string = num_string + hund_thousands + ' hundred trillion'
+		else	
+			num_string = num_string + hund_thousands + ' hundred'
+		end
+		if left > 0
+			num_string = num_string +' '
+		end
+	end
+
+	write = left/10000000000000
+	left = left - write*10000000000000
+	if write > 0
+		if ((write == 1) and (left > 1000000000000))
+			num_string = num_string + teenagers[(left/1000000000000)-1] + ' trillion'
+			left = left%1000000000000
+		elsif left < 1000000000000
+			num_string = num_string + tens_place[write-1] + ' trillion'
+			
+		else
+			num_string = num_string + tens_place[write-1]
+		end
+		if left > 1000000000000
+			num_string = num_string + '-'
+		else
+			num_string = num_string + ' '
+		end 
+	end
+
+	write = left/1000000000000
+	left = left - write*1000000000000
+	if write > 0
+		millions = english_number write
+		num_string = num_string + millions + ' trillion'
+		if left > 0
+			num_string = num_string +' '
+		end
+	end
+
+	write = left/100000000000
+	left = left - write*100000000000
+	if write > 0
+		hund_thousands = english_number write
+		if left > 100000000000
+			num_string = num_string + hund_thousands + ' hundred billion'
+		elsif left < 1000000000
+			num_string = num_string + hund_thousands + ' hundred billion'
+		else	
+			num_string = num_string + hund_thousands + ' hundred'
+		end
+		if left > 0
+			num_string = num_string +' '
+		end
+	end
+
+	write = left/10000000000
+	left = left - write*10000000000
+	if write > 0
+		if ((write == 1) and (left > 1000000000))
+			num_string = num_string + teenagers[(left/1000000000)-1] + ' billion'
+			left = left%1000000000
+		elsif left < 1000000000
+			num_string = num_string + tens_place[write-1] + ' billion'
+			
+		else
+			num_string = num_string + tens_place[write-1]
+		end
+		if left > 1000000000
+			num_string = num_string + '-'
+		else
+			num_string = num_string + ' '
+		end 
+	end
+
+	write = left/1000000000
+	left = left - write*1000000000
+	if write > 0
+		millions = english_number write
+		num_string = num_string + millions + ' billion'
+		if left > 0
+			num_string = num_string +' '
+		end
+	end
+
+	write = left/100000000
+	left = left - write*100000000
+	if write > 0
+		hund_thousands = english_number write
+		if left > 100000000
+			num_string = num_string + hund_thousands + ' hundred million'
+		elsif left < 1000000
+			num_string = num_string + hund_thousands + ' hundred million'
+		else	
+			num_string = num_string + hund_thousands + ' hundred'
+		end
+		if left > 0
+			num_string = num_string +' '
+		end
+	end
+
+	write = left/10000000
+	left = left - write*10000000
+	if write > 0
+		if ((write == 1) and (left > 1000000))
+			num_string = num_string + teenagers[(left/1000000)-1] + ' million'
+			left = left%1000000
+		elsif left < 1000000
+			num_string = num_string + tens_place[write-1] + ' million'
+			
+		else
+			num_string = num_string + tens_place[write-1]
+		end
+		if left > 1000000
+			num_string = num_string + '-'
+		else
+			num_string = num_string + ' '
+		end 
+	end
+
+	write = left/1000000
+	left = left - write*1000000
+	if write > 0
+		millions = english_number write
+		num_string = num_string + millions + ' million'
+		if left > 0
+			num_string = num_string +' '
+		end
+	end
+
 	write = left/100000
 	left = left - write*100000
-	puts write
-	puts left
 	if write > 0
 		hund_thousands = english_number write
 		if left > 100000
@@ -269,9 +402,6 @@ def english_number number
 
 	write = left/1000
 	left = left - write*1000
-	# puts write
-	# puts left
-	# exit!
 	if write > 0
 		thousands = english_number write
 		num_string = num_string + thousands + ' thousand'
@@ -316,8 +446,8 @@ end
 
 # puts english_number(3211)
 # puts english_number(10012)
-puts english_number(810009)
-# puts english_number(1000000000000)
+# puts english_number(817009)
+puts english_number(756876100000870)
 
 
 
