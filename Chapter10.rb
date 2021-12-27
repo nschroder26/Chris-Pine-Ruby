@@ -230,11 +230,26 @@ def english_number number
 
 	left = number
 
+	write = left/100000
+	left = left - write*100000
+	puts write
+	puts left
+	if write > 0
+		hund_thousands = english_number write
+		if left > 100000
+			num_string = num_string + hund_thousands + ' hundred thousand'
+		elsif left < 1000
+			num_string = num_string + hund_thousands + ' hundred thousand'
+		else	
+			num_string = num_string + hund_thousands + ' hundred'
+		end
+		if left > 0
+			num_string = num_string +' '
+		end
+	end
+
 	write = left/10000
 	left = left - write*10000
-	# puts write
-	# puts left
-	# exit!
 	if write > 0
 		if ((write == 1) and (left > 1000))
 			num_string = num_string + teenagers[(left/1000)-1] + ' thousand'
@@ -300,8 +315,8 @@ end
 
 
 # puts english_number(3211)
-puts english_number(1902)
-# puts english_number(999999)
+# puts english_number(10012)
+puts english_number(810009)
 # puts english_number(1000000000000)
 
 
