@@ -232,8 +232,11 @@ def english_number number
 
 	write = left/10000
 	left = left - write*10000
+	# puts write
+	# puts left
+	# exit!
 	if write > 0
-		if ((write == 1) and (left > 0))
+		if ((write == 1) and (left > 1000))
 			num_string = num_string + teenagers[(left/1000)-1] + ' thousand'
 			left = left%1000
 		elsif left < 1000
@@ -297,7 +300,7 @@ end
 
 
 # puts english_number(3211)
-puts english_number(10012)
+puts english_number(1902)
 # puts english_number(999999)
 # puts english_number(1000000000000)
 
