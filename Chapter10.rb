@@ -455,15 +455,132 @@
 
 
 #wedding number
-def wedding_number number
+# def wedding_number number
+# 	if number < 0
+# 		return 'Please enter a number that isn\'t negative.' 
+# 	end
+# 	if number == 0
+# 		return 'zero'
+# 	end
+# 	num_string = ''
+
+# 	ones_place = ['one', 'two', 'three', 'four', 'five',
+# 					'six', 'seven', 'eight', 'nine']
+# 	tens_place = ['ten', 'twenty', 'thirty', 'fourty', 'fifty',
+# 					'sixty', 'seventy', 'eighty', 'ninety']
+# 	teenagers = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
+# 					'sixteen', 'seventeen', 'eighteen', 'nineteen']
+
+# 	left = number
+
+# 	#thousands
+# 	write = left/100000
+# 	left = left - write*100000
+# 	if write > 0
+# 		hund_thousands = wedding_number write
+# 		if left > 100000
+# 			num_string = num_string + hund_thousands + ' hundred thousand'
+# 		elsif left < 1000
+# 			num_string = num_string + hund_thousands + ' hundred thousand'
+# 		else	
+# 			num_string = num_string + hund_thousands + ' hundred'
+# 		end
+# 		if left > 0
+# 			num_string = num_string +' '
+# 		end
+# 	end
+
+# 	write = left/10000
+# 	left = left - write*10000
+# 	if write > 0
+# 		if ((write == 1) and (left > 1000))
+# 			num_string = num_string + teenagers[(left/1000)-1] + ' thousand'
+# 			left = left%1000
+# 		elsif left < 1000
+# 			num_string = num_string + tens_place[write-1] + ' thousand'
+			
+# 		else
+# 			num_string = num_string + tens_place[write-1]
+# 		end
+# 		if left > 1000
+# 			num_string = num_string + '-'
+# 		else
+# 			num_string = num_string + ' '
+# 		end 
+# 	end
+
+# 	write = left/1000
+# 	left = left - write*1000
+# 	if write > 0
+# 		thousands = wedding_number write
+# 		num_string = num_string + thousands + ' thousand'
+# 		if left > 0
+# 			num_string = num_string +' '
+# 		end
+# 	end
+
+# 	#hundreds
+# 	write = left/100
+# 	left = left - write*100
+# 	if write > 0 && left > 0
+# 		hundreds = wedding_number write
+# 		num_string = num_string + hundreds + ' hundred and '
+# 	elsif write > 0
+# 		hundreds = wedding_number write
+# 		num_string = num_string + hundreds + ' hundred'
+# 		if left > 0
+# 			num_string = num_string +' '
+# 		end
+# 	end
+
+# 	write = left/10
+# 	left = left - write*10
+# 	if write > 0
+# 		if ((write == 1) and (left > 0))
+# 			num_string = num_string + teenagers[left-1]
+# 			left = 0
+# 		else
+# 			num_string = num_string + tens_place[write-1]
+# 		end
+# 		if left > 0
+# 				num_string = num_string + '-'
+# 		end 
+# 	end
+# 	write = left
+# 	left = 0
+
+# 	if write > 0
+# 		num_string = num_string + ones_place[write-1]
+# 	end
+# 	num_string
+# end
+
+# puts wedding_number(1901)
+
+
+#updated bottles of beer
+
+def beer_sentance total
+	while total > 0
+		bottles_of_beer total
+		num_string = bottles_of_beer(total) + ' bottles of beer on the wall, ' + bottles_of_beer(total) +
+		' bottles of beer! Take one down, pass it around! ' + bottles_of_beer(total) +
+		' bottles of beer on the wall!'
+		total -= 1
+		puts num_string
+		puts
+	end
+end
+
+
+def bottles_of_beer number
 	if number < 0
 		return 'Please enter a number that isn\'t negative.' 
 	end
 	if number == 0
 		return 'zero'
 	end
-	num_string = ''
-
+	conv_num = ''
 	ones_place = ['one', 'two', 'three', 'four', 'five',
 					'six', 'seven', 'eight', 'nine']
 	tens_place = ['ten', 'twenty', 'thirty', 'fourty', 'fifty',
@@ -473,66 +590,46 @@ def wedding_number number
 
 	left = number
 
-	#thousands
-	write = left/100000
-	left = left - write*100000
-	if write > 0
-		hund_thousands = wedding_number write
-		if left > 100000
-			num_string = num_string + hund_thousands + ' hundred thousand'
-		elsif left < 1000
-			num_string = num_string + hund_thousands + ' hundred thousand'
-		else	
-			num_string = num_string + hund_thousands + ' hundred'
-		end
-		if left > 0
-			num_string = num_string +' '
-		end
-	end
-
 	write = left/10000
 	left = left - write*10000
 	if write > 0
 		if ((write == 1) and (left > 1000))
-			num_string = num_string + teenagers[(left/1000)-1] + ' thousand'
+			conv_num = conv_num + teenagers[(left/1000)-1] + ' thousand'
 			left = left%1000
 		elsif left < 1000
-			num_string = num_string + tens_place[write-1] + ' thousand'
+			conv_num = conv_num + tens_place[write-1] + ' thousand'
 			
 		else
-			num_string = num_string + tens_place[write-1]
+			conv_num = conv_num + tens_place[write-1]
 		end
 		if left > 1000
-			num_string = num_string + '-'
+			conv_num = conv_num + '-'
 		else
-			num_string = num_string + ' '
+			conv_num = conv_num + ' '
 		end 
 	end
 
 	write = left/1000
 	left = left - write*1000
 	if write > 0
-		thousands = wedding_number write
-		num_string = num_string + thousands + ' thousand'
+		thousands = bottles_of_beer write
+		conv_num = conv_num + thousands + ' thousand'
 		if left > 0
-			num_string = num_string +' '
+			conv_num = conv_num +' '
 		end
 	end
 
 	#hundreds
 	write = left/100
 	left = left - write*100
-	puts
-	puts write
-	puts left
 	if write > 0 && left > 0
-		hundreds = wedding_number write
-		num_string = num_string + hundreds + ' hundred and '
+		hundreds = bottles_of_beer write
+		conv_num = conv_num + hundreds + ' hundred and '
 	elsif write > 0
-		hundreds = wedding_number write
-		num_string = num_string + hundreds + ' hundred'
+		hundreds = bottles_of_beer write
+		conv_num = conv_num + hundreds + ' hundred'
 		if left > 0
-			num_string = num_string +' '
+			conv_num = conv_num +' '
 		end
 	end
 
@@ -540,25 +637,32 @@ def wedding_number number
 	left = left - write*10
 	if write > 0
 		if ((write == 1) and (left > 0))
-			num_string = num_string + teenagers[left-1]
+			conv_num = conv_num + teenagers[left-1]
 			left = 0
 		else
-			num_string = num_string + tens_place[write-1]
+			conv_num = conv_num + tens_place[write-1]
 		end
 		if left > 0
-				num_string = num_string + '-'
+				conv_num = conv_num + '-'
 		end 
 	end
 	write = left
 	left = 0
 
 	if write > 0
-		num_string = num_string + ones_place[write-1]
+		conv_num = conv_num + ones_place[write-1]
+	else
+		conv_num = conv_num + ''
 	end
-	num_string
 end
 
-puts wedding_number(1901)
+beer_sentance(6735)
+
+
+
+
+
+
 
 
 
