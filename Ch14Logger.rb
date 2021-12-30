@@ -3,11 +3,6 @@ def prog_logger block_desc, &block
 	block.call
 end
 
-# small_block = Proc.new do
-# 	some_number = rand(7)
-# 	puts '"small block" finished, returning:'"#{some_number}"
-# end
-
 prog_logger ' "outer block"...' do
 	prog_logger '"small block"...' do
 		some_number = rand(7)
