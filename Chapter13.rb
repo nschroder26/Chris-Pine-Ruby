@@ -49,50 +49,71 @@
 # puts 6.factorial
 
 
-class Integer
-	def to_roman
-		user_entry = self
-		roman_num = ''
-		while user_entry > 0
-			if user_entry >= 1000
-				roman_num += 'M' * (user_entry/1000)
-				user_entry = user_entry%1000
-			elsif user_entry >= 500
-				roman_num += 'D' * (user_entry/500)
-				user_entry = user_entry%500
-			elsif user_entry >= 100
-				roman_num += 'C' * (user_entry/100)
-				user_entry = user_entry%100
-			elsif user_entry >= 50
-				roman_num += 'L' * (user_entry/50)
-				user_entry = user_entry%50
-			elsif user_entry >= 10
-				roman_num += 'X' * (user_entry/10)
-				user_entry = user_entry%10
-			elsif user_entry >= 5
-				roman_num += 'V' * (user_entry/5)
-				user_entry = user_entry%5
-			elsif user_entry >= 1
-				roman_num += 'I' * (user_entry/1)
-				user_entry = user_entry%1
-			else
-				puts 'Please enter a valid number to convert'
-				exit
-			end
+# class Integer
+# 	def to_roman
+# 		user_entry = self
+# 		roman_num = ''
+# 		while user_entry > 0
+# 			if user_entry >= 1000
+# 				roman_num += 'M' * (user_entry/1000)
+# 				user_entry = user_entry%1000
+# 			elsif user_entry >= 500
+# 				roman_num += 'D' * (user_entry/500)
+# 				user_entry = user_entry%500
+# 			elsif user_entry >= 100
+# 				roman_num += 'C' * (user_entry/100)
+# 				user_entry = user_entry%100
+# 			elsif user_entry >= 50
+# 				roman_num += 'L' * (user_entry/50)
+# 				user_entry = user_entry%50
+# 			elsif user_entry >= 10
+# 				roman_num += 'X' * (user_entry/10)
+# 				user_entry = user_entry%10
+# 			elsif user_entry >= 5
+# 				roman_num += 'V' * (user_entry/5)
+# 				user_entry = user_entry%5
+# 			elsif user_entry >= 1
+# 				roman_num += 'I' * (user_entry/1)
+# 				user_entry = user_entry%1
+# 			else
+# 				puts 'Please enter a valid number to convert'
+# 				exit
+# 			end
+# 		end
+# 		puts roman_num
+# 	end
+# end
+
+# puts 12.to_roman
+# puts 56.to_roman
+# puts 134.to_roman
+# puts 578.to_roman
+# puts 1978.to_roman
+			
+
+
+#cheating dice
+
+class Die
+	def initialize
+		roll
+	end
+	def roll
+		@number_showing = 1 + rand(6)
+	end
+	def showing
+		@number_showing
+	end
+	def cheat ent_num
+		if ent_num > 6 || ent_num < 1
+			puts 'That\'s not a valid dice value, silly.'
+		else
+			@number_showing = ent_num
 		end
-		puts roman_num
 	end
 end
 
-puts 12.to_roman
-puts 56.to_roman
-puts 134.to_roman
-puts 578.to_roman
-puts 1978.to_roman
-				
-
-
-
+puts Die.new.cheat 8
 
 
 
