@@ -12,5 +12,3 @@ end
 ring_chime do 
 	puts 'DONG!'
 	end
-
-# ring_chime
